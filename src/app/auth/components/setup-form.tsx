@@ -1,35 +1,35 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { signIn } from 'next-auth/react';
+import { useState } from "react";
+import { signIn } from "next-auth/react";
 
 export default function SetupForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
 
     // 验证表单
     if (!username || !password || !confirmPassword) {
-      setError('请填写所有必填字段');
+      setError("请填写所有必填字段");
       setLoading(false);
       return;
     }
 
     if (password !== confirmPassword) {
-      setError('两次输入的密码不一致');
+      setError("两次输入的密码不一致");
       setLoading(false);
       return;
     }
 
     if (password.length < 6) {
-      setError('密码长度至少为6个字符');
+      setError("密码长度至少为6个字符");
       setLoading(false);
       return;
     }
@@ -37,10 +37,10 @@ export default function SetupForm() {
     try {
       console.log("开始初始化系统...");
       // 调用注册API
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
       });
@@ -48,22 +48,22 @@ export default function SetupForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || '系统初始化失败');
+        throw new Error(data.message || "系统初始化失败");
       }
 
       console.log("初始化成功，正在登录...");
       // 初始化成功后自动登录
-      const result = await signIn('credentials', {
+      const result = await signIn("credentials", {
         redirect: false, // 不自动重定向
         login: username,
         password,
-        callbackUrl: '/dashboard'
+        callbackUrl: "/dashboard",
       });
 
       console.log("登录结果:", result);
 
       if (result?.error) {
-        setError('自动登录失败，请尝试手动登录');
+        setError("自动登录失败，请尝试手动登录");
         setLoading(false);
         return;
       }
@@ -71,12 +71,12 @@ export default function SetupForm() {
       // 登录成功，使用全页面导航而不是客户端路由
       // 这确保了会话状态会被正确应用到下一个页面
       console.log("登录成功，跳转到仪表盘");
-      window.location.href = '/dashboard';
+      window.location.href = "/dashboard";
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError('系统初始化过程中发生错误');
+        setError("系统初始化过程中发生错误");
       }
       setLoading(false);
     }
@@ -90,18 +90,24 @@ export default function SetupForm() {
             <div className="relative h-24 w-24">
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full opacity-20 animate-pulse"></div>
               <div className="absolute inset-2 bg-dark-bg rounded-full flex items-center justify-center">
-                <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">CM</span>
+                <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
+                  CM
+                </span>
               </div>
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-primary">欢迎使用酷监控</h1>
+          <h1 className="text-3xl font-bold text-primary">
+            欢迎使用东2信息化监控
+          </h1>
           <p className="text-xl text-foreground mt-2">系统初始化</p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <div className="bg-dark-nav/30 p-4 rounded-lg border border-purple-600/10">
-              <h3 className="text-lg font-medium text-primary mb-2">功能特点</h3>
+              <h3 className="text-lg font-medium text-primary mb-2">
+                功能特点
+              </h3>
               <ul className="space-y-2 text-sm text-foreground/80">
                 <li className="flex items-center">
                   <span className="inline-block w-5 h-5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full mr-2 flex-shrink-0"></span>
@@ -121,15 +127,17 @@ export default function SetupForm() {
                 </li>
               </ul>
             </div>
-            
+
             <div className="bg-dark-nav/30 p-4 rounded-lg border border-purple-600/10">
-              <h3 className="text-lg font-medium text-primary mb-2">系统要求</h3>
+              <h3 className="text-lg font-medium text-primary mb-2">
+                系统要求
+              </h3>
               <p className="text-sm text-foreground/80">
                 本系统为单用户应用，您现在创建的账户将成为系统管理员，拥有全部权限。初始化完成后，您可以立即开始配置监控项。
               </p>
             </div>
           </div>
-          
+
           <div>
             <form onSubmit={handleSubmit}>
               {error && (
@@ -137,9 +145,12 @@ export default function SetupForm() {
                   {error}
                 </div>
               )}
-              
+
               <div className="mb-4">
-                <label htmlFor="username" className="block mb-2 text-sm font-medium text-foreground">
+                <label
+                  htmlFor="username"
+                  className="block mb-2 text-sm font-medium text-foreground"
+                >
                   管理员账户名 <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -151,9 +162,12 @@ export default function SetupForm() {
                   required
                 />
               </div>
-              
+
               <div className="mb-4">
-                <label htmlFor="password" className="block mb-2 text-sm font-medium text-foreground">
+                <label
+                  htmlFor="password"
+                  className="block mb-2 text-sm font-medium text-foreground"
+                >
                   密码 <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -165,9 +179,12 @@ export default function SetupForm() {
                   required
                 />
               </div>
-              
+
               <div className="mb-6">
-                <label htmlFor="confirmPassword" className="block mb-2 text-sm font-medium text-foreground">
+                <label
+                  htmlFor="confirmPassword"
+                  className="block mb-2 text-sm font-medium text-foreground"
+                >
                   确认密码 <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -179,7 +196,7 @@ export default function SetupForm() {
                   required
                 />
               </div>
-              
+
               <button
                 type="submit"
                 disabled={loading}
@@ -187,20 +204,21 @@ export default function SetupForm() {
               >
                 {loading ? (
                   <span className="flex items-center justify-center">
-                    <i className="fas fa-circle-notch fa-spin mr-2"></i> 正在初始化...
+                    <i className="fas fa-circle-notch fa-spin mr-2"></i>{" "}
+                    正在初始化...
                   </span>
                 ) : (
-                  '开始使用酷监控'
+                  "开始使用东2信息化监控"
                 )}
               </button>
             </form>
           </div>
         </div>
       </div>
-      
+
       <div className="text-center mt-6 text-foreground/60 text-sm">
-        <p>酷监控 · 高颜值的网站和接口监控工具</p>
+        <p>东2信息化监控 · 高颜值的网站和接口监控工具</p>
       </div>
     </div>
   );
-} 
+}

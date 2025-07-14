@@ -1,56 +1,59 @@
-# 酷监控 | 高颜值的监控工具
+# 东 2 信息化监控 | 高颜值的监控工具
 
-酷监控是一个高颜值的监控工具，支持网站监控/接口监控/HTTPS证书监控等多种监控类型，帮助开发者及运维人员实时掌握网站/接口运行状态。本项目支持Docker一键快速部署，拥有美观现代的界面设计。
-
+东 2 信息化监控是一个高颜值的监控工具，支持网站监控/接口监控/HTTPS 证书监控等多种监控类型，帮助开发者及运维人员实时掌握网站/接口运行状态。本项目支持 Docker 一键快速部署，拥有美观现代的界面设计。
 
 ## 🚀 功能特点
 
-* **多种监控类型**：支持HTTP/HTTPS网站、API接口、HTTPS证书过期、TCP端口、MySQL/Redis数据库等多种监控
-* **推送监控**：支持被动接收客户端的心跳推送，实现不可直接访问设备的监控
-* **精美界面**：深色/浅色主题切换，响应式设计适配各种设备尺寸
-* **强大通知系统**：支持邮件、Webhook、微信通知渠道等多种通知方式
-* **数据可视化**：直观的状态图表和分析功能，快速了解系统运行状况
-* **持久化存储**：使用SQLite数据库，轻量级部署无需额外依赖
+- **多种监控类型**：支持 HTTP/HTTPS 网站、API 接口、HTTPS 证书过期、TCP 端口、MySQL/Redis 数据库等多种监控
+- **推送监控**：支持被动接收客户端的心跳推送，实现不可直接访问设备的监控
+- **精美界面**：深色/浅色主题切换，响应式设计适配各种设备尺寸
+- **强大通知系统**：支持邮件、Webhook、微信通知渠道等多种通知方式
+- **数据可视化**：直观的状态图表和分析功能，快速了解系统运行状况
+- **持久化存储**：使用 SQLite 数据库，轻量级部署无需额外依赖
 
 ## 📸 截图预览
 
 ### 控制台主界面
+
 ![控制台主界面](./screenshot/dashboard-main.png)
 
 ### 单个监控项详情页
+
 ![监控详情页](./screenshot/dashboard-one.png)
 
 ### 添加监控
+
 ![添加监控](./screenshot/add.png)
 
 ### 通知设置
+
 ![通知设置](./screenshot/notification.png)
 
 ## 🔧 监控类型
 
-* **HTTP/HTTPS网站监控**：检查网站可用性和响应时间
-* **HTTPS证书监控**：检查SSL证书过期时间，提前预警
-* **关键词监控**：检查网页内容是否包含特定关键词
-* **TCP端口监控**：检查端口是否开放
-* **MySQL/MariaDB数据库监控**：检查数据库连接和基本查询
-* **Redis数据库监控**：检查Redis服务状态
-* **推送监控**：被动接收客户端的心跳推送
+- **HTTP/HTTPS 网站监控**：检查网站可用性和响应时间
+- **HTTPS 证书监控**：检查 SSL 证书过期时间，提前预警
+- **关键词监控**：检查网页内容是否包含特定关键词
+- **TCP 端口监控**：检查端口是否开放
+- **MySQL/MariaDB 数据库监控**：检查数据库连接和基本查询
+- **Redis 数据库监控**：检查 Redis 服务状态
+- **推送监控**：被动接收客户端的心跳推送
 
 ## 🛠️ 技术栈
 
-* **前端框架**：Next.js 
-* **后端**：Next.js API Routes
-* **数据库**：SQLite (通过Prisma ORM)
-* **UI库**：TailwindCSS
-* **图表库**：ECharts
-* **认证**：NextAuth.js
-* **计划任务**：Croner
+- **前端框架**：Next.js
+- **后端**：Next.js API Routes
+- **数据库**：SQLite (通过 Prisma ORM)
+- **UI 库**：TailwindCSS
+- **图表库**：ECharts
+- **认证**：NextAuth.js
+- **计划任务**：Croner
 
 ## 📦 安装与部署
 
-### 使用Docker部署（推荐）
+### 使用 Docker 部署（推荐）
 
-使用Docker是运行酷监控最简单的方式：
+使用 Docker 是运行东 2 信息化监控最简单的方式：
 
 ```bash
 # 适用于x86/x64架构
@@ -60,16 +63,16 @@ docker run -d --name coolmonitor --restart always -p 3333:3333 -v ~/coolmonitor_
 docker run -d --name coolmonitor --restart always -p 3333:3333 -v ~/coolmonitor_data:/app/data star7th/coolmonitor:arm-latest
 ```
 
-
 ### 初始化说明
 
 首次启动时，系统会自动：
+
 1. 检查数据库是否存在
    - 如果存在预置的数据库，则直接使用
    - 如果不存在，则自动初始化数据库结构
 2. 首次访问时，系统会引导你创建管理员账户
 
-访问 http://localhost:3333 开始使用酷监控。
+访问 http://localhost:3333 开始使用东 2 信息化监控。
 
 ## 🧩 项目结构
 
@@ -93,18 +96,18 @@ coolmonitor/
 
 ## 🌍 贡献指南
 
-欢迎贡献代码！请随时提交Pull Request。
+欢迎贡献代码！请随时提交 Pull Request。
 
-1. Fork仓库
+1. Fork 仓库
 2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
 3. 提交更改 (`git commit -m '添加某项惊人功能'`)
 4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 打开Pull Request
+5. 打开 Pull Request
 
 ## 📄 许可证
 
-本项目基于Apache License 2.0许可证开源 - 详情请查看 LICENSE 文件。
+本项目基于 Apache License 2.0 许可证开源 - 详情请查看 LICENSE 文件。
 
 ## 🔗 链接
 
-* GitHub仓库: https://github.com/star7th/coolmonitor
+- GitHub 仓库: https://github.com/star7th/coolmonitor
