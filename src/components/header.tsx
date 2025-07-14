@@ -118,7 +118,7 @@ export function Header() {
             </button>
 
             {/* GitHub链接 */}
-            <Link
+            {/* <Link
               href="https://github.com/star7th/coolmonitor"
               target="_blank"
               rel="noopener noreferrer"
@@ -126,10 +126,10 @@ export function Header() {
               aria-label="GitHub仓库"
             >
               <i className="fab fa-github"></i>
-            </Link>
+            </Link> */}
 
             {/* 产品推荐下拉框 */}
-            <div className="relative" ref={productsDropdownRef}>
+            {/* <div className="relative" ref={productsDropdownRef}>
               <button
                 className="p-2 rounded-button hover:bg-primary/10 transition-colors dark:text-white text-light-text-primary"
                 onClick={() => setIsProductsOpen(!isProductsOpen)}
@@ -173,7 +173,7 @@ export function Header() {
                   </div>
                 </div>
               )}
-            </div>
+            </div> */}
 
             {/* 用户下拉菜单 */}
             <div className="relative" ref={dropdownRef}>

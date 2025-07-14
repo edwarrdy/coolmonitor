@@ -1,3 +1,11 @@
+/*
+ * @Author: edward jifengming92@163.com
+ * @Date: 2025-07-14 08:59:39
+ * @LastEditors: edward jifengming92@163.com
+ * @LastEditTime: 2025-07-14 09:26:00
+ * @FilePath: \coolmonitor\src\components\settings\about-settings.tsx
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 "use client";
 
 export function AboutSettings() {
@@ -17,7 +25,7 @@ export function AboutSettings() {
           高颜值的监控工具
         </p>
 
-        <div className="mt-6 space-x-2">
+        {/* <div className="mt-6 space-x-2">
           <a
             href="https://github.com/star7th/coolmonitor"
             target="_blank"
@@ -37,7 +45,7 @@ export function AboutSettings() {
             <i className="fas fa-book mr-2"></i>
             文档
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );
