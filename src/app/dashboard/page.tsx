@@ -380,17 +380,9 @@ function Sidebar({
             setSelectedMonitor(null);
             setActiveItems([]);
           }}
-<<<<<<< HEAD
-        >
-          东2信息化监控
-        </div>
-        <button
-          className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2.5 rounded-button hover:opacity-90 transition-opacity flex items-center space-x-2 w-full mb-5 justify-center"
-=======
         >酷监控</div>
         <button 
           className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2.5 rounded-button hover:opacity-90 transition-opacity flex items-center space-x-2 w-full mb-3 justify-center"
->>>>>>> a58d9eb9d09ee4b48941c365c50a575c511439e4
           onClick={() => setIsMonitorFormOpen(true)}
         >
           <i className="fas fa-plus"></i>

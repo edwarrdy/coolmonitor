@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
-import axios from "axios";
-import crypto from "crypto";
-import { formatDateTime } from "@/lib/monitors/utils";
-import { validateAuth } from "@/lib/auth-helpers";
-=======
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import axios from 'axios';
@@ -13,7 +5,6 @@ import crypto from 'crypto';
 import { formatDateTime } from '@/lib/monitors/utils';
 import { sendWebhookNotification } from '@/lib/monitors/notification-service';
 import { validateAuth } from '@/lib/auth-helpers';
->>>>>>> a58d9eb9d09ee4b48941c365c50a575c511439e4
 
 // 定义不同类型通知的配置接口
 interface EmailConfig {
@@ -174,42 +165,6 @@ async function testWebhookNotification(name: string, config: WebhookConfig) {
   }
 
   try {
-<<<<<<< HEAD
-    console.log(`开始测试Webhook通知: ${name}, URL: ${url}`);
-
-    // 准备测试数据 - 使用与实际通知一致的格式
-    const webhookData = {
-      event: "status_change",
-      timestamp: new Date().toISOString(),
-      monitor: {
-        name: "测试监控项",
-        type: "http",
-        status: "正常", // 中文状态描述
-        status_code: 1, // 状态码: 1=正常
-        time: formatDateTime(),
-        message: "这是一条来自东2信息化监控的测试通知",
-      },
-      // 添加失败信息结构，与实际通知保持一致
-      failure_info: null,
-    };
-
-    console.log(`Webhook测试数据: ${JSON.stringify(webhookData)}`);
-
-    // 发送Webhook请求
-    const response = await axios.post(url, webhookData, {
-      headers: {
-        "Content-Type": "application/json",
-        "User-Agent": "CoolMonitor-Notification-Service",
-      },
-      timeout: 10000, // 10秒超时
-    });
-
-    console.log(
-      `Webhook测试响应: 状态码=${response.status}, 数据=${JSON.stringify(
-        response.data
-      )}`
-    );
-=======
     // 构造一份与正式通知结构一致的测试数据
     const testData = {
       monitorName: '测试监控项',
@@ -228,7 +183,6 @@ async function testWebhookNotification(name: string, config: WebhookConfig) {
     const response = await sendWebhookNotification(config, testData);
 
     console.log(`Webhook测试响应: 状态码=${response.status}, 数据=${JSON.stringify(response.data)}`);
->>>>>>> a58d9eb9d09ee4b48941c365c50a575c511439e4
 
     if (response.status >= 200 && response.status < 300) {
       return NextResponse.json({
@@ -245,13 +199,8 @@ async function testWebhookNotification(name: string, config: WebhookConfig) {
       );
     }
   } catch (error) {
-<<<<<<< HEAD
-    console.error("发送Webhook通知失败:", error);
-    let errorMessage = "发送Webhook请求失败";
-=======
     console.error('发送Webhook通知失败:', error);
     let errorMessage = '发送Webhook请求失败';
->>>>>>> a58d9eb9d09ee4b48941c365c50a575c511439e4
 
     if (axios.isAxiosError(error)) {
       if (error.response) {
